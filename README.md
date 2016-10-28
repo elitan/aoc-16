@@ -19,3 +19,14 @@
 - Python
 - Haskel
 - Bash
+
+
+# Folder naming
+
+example:
+
+```
+elitan/01/python/
+thomasjevskij/04/d/
+nejton/21/haskel/
+```
