@@ -2,6 +2,10 @@
 
 [http://adventofcode.com/2016](http://adventofcode.com/2016)
 
+# Rules
+
+Use at least languange from each person. The more different languages, the more fame!
+
 ## elitan
 
 - C
