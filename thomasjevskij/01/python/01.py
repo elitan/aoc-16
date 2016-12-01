@@ -36,12 +36,12 @@ for instruction in instructions:
         p = (position[0, 0], position[1, 0])
         if p in positions:
             done = True
-            #print(p)
             print('Problem 2: %d'%int(norm(position, ord = 1)))
             break
         else:
             positions.add(p)
     if done:
         break
+    
 t = time.process_time() - t
 print("Time elapsed: %d µs"%int(t * 1000000))
