@@ -1,4 +1,5 @@
 import numpy as np
+from numpy.linalg import norm
 import time
 
 t = time.process_time()
@@ -16,7 +17,7 @@ for instruction in instructions:
     direction = np.matmul(rotations[instruction[0]], direction)
     position += int(instruction[1:]) * direction
 
-print("Problem 1: %d"%sum([abs(i) if i < 0 else i for i in position]))
+print("Problem 1: %d"%int(norm(position, ord = 1)))
 t = time.process_time() - t
 print("Time elapsed: %d µs"%int(t * 10000000))
 t = time.process_time()
@@ -36,7 +37,7 @@ for instruction in instructions:
         if p in positions:
             done = True
             #print(p)
-            print('Problem 2: %d'%sum([abs(i) if i < 0 else i for i in position]))
+            print('Problem 2: %d'%int(norm(position, ord = 1)))
             break
         else:
             positions.add(p)
