@@ -2,6 +2,11 @@ import time
 
 t = time.process_time()
 
+functions = { 'U': lambda row, col: (row - 1, col),
+              'D': lambda row, col: (row + 1, col),
+              'L': lambda row, col: (row, col - 1),
+              'R': lambda row, col: (row, col + 1) }
+
 with open('input.txt') as f:
     lines = [l.strip() for l in f.readlines()]
 
@@ -10,18 +15,9 @@ p1 = ''
 
 for line in lines:
     for character in line:
-        if character == 'U':
-            row -= 1
-        if character == 'D':
-            row += 1
-        if character == 'R':
-            col += 1
-        if character == 'L':
-            col -= 1
+        row, col = functions[character](row, col)
         row = sorted((0, row, 2))[1]
         col = sorted((0, col, 2))[1]
-        #row = min(max(row, 0), 2)
-        #col = min(max(col, 0), 2)
     p1 += '{0:d}'.format(3 * row + col + 1)
 
 print("Problem 1: " + p1)
@@ -34,24 +30,11 @@ key_pad = [ ('0', '0', '1', '0', '0'), ('0', '2', '3', '4', '0'),
             ('0', '0', 'D', '0', '0') ]
 row, col = 2, 0
 p2 = ''
-forbidden = set(((0, 0), (0, 1), (0, 3), (0, 4), (1, 0), (1, 4),
-                (3, 0), (3, 4), (4, 0), (4, 1), (4, 3), (4, 4)))
 for line in lines:
     for character in line:
-        if character == 'U':
-            if (row - 1, col) not in forbidden:
-                row -= 1
-        if character == 'D':
-            if (row + 1, col) not in forbidden:
-                row += 1
-        if character == 'R':
-            if (row, col + 1) not in forbidden:
-                col += 1
-        if character == 'L':
-            if (row, col - 1) not in forbidden:
-                col -= 1
-        row = sorted((0, row, 4))[1]
-        col = sorted((0, col, 4))[1]
+        new_row, new_col = functions[character](row, col)
+        if sum(map(abs, (2 - new_row, 2 - new_col))) < 3:
+            row, col = new_row, new_col
     p2 += key_pad[row][col]
         
 print("Problem 2: " + p2)
