@@ -49,7 +49,7 @@ for line in lines:
     p1.append((row, col))
 
 draw_grid(screen, intensities)
-for i, c in enumerate(p1):
+for i, c in reversed(list(enumerate(p1))):
     pygame.draw.circle(screen, (0, int(255 / 5) * i, 0), (c[1]*100+50, c[0]*100+50), 5*(1+i))
 pygame.image.save(screen, 'problem1.png')
 print(p1)
