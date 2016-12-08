@@ -1,4 +1,4 @@
-with open("data.txt", "r") as f:
+with open("data.txt", "r") as f, open("output.txt", "w") as out:
     counter = 0
     for line in f:
         numChars = {}
@@ -21,4 +21,24 @@ with open("data.txt", "r") as f:
                 break
         else:
             counter += num
+            out.write(line[:-8]+"\n")
+
     print "1:", counter
+
+with open("output.txt", "r") as f:
+    for line in f:
+        words = line.rstrip().split("-")
+        sector = int(words[-1])
+        key = sector%26
+        words = words[:-1]
+        output = ""
+
+        for word in words:
+            for c in word:
+                if (ord(c) + key) > ord('z'):
+                    c = chr(ord(c)-26)
+                output += chr(ord(c)+key)
+            output += " "
+
+        if "north" in output:
+            print output, sector
