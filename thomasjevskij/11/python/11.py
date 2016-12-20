@@ -113,4 +113,4 @@ pairs.extend([(0, 0), (0, 0)])
 current_state = (tuple(sorted(pairs, key=lambda x: 10*x[0]+x[1])), 0, 0)
 print('Problem 2: {0}'.format(solve(current_state)))
 t = time.process_time() - t
-print("Time elapsed: {0} ms".format(int(t * 1000)))
+print("Time elapsed: {0} s".format(t))
