@@ -2,8 +2,6 @@ import time
 import re
 from collections import defaultdict, deque
 from itertools import combinations
-from random import choice
-from copy import deepcopy
 
 def move(state, indices, direction):
     components = list(*state[:-2])
