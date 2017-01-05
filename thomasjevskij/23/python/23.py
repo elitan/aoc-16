@@ -47,13 +47,6 @@ t = time.process_time()
 
 with open('input.txt') as f:
     lines = f.readlines()
-#lines = [ 'cpy 2 a',
-#          'tgl a',
-#          'tgl a',
-#          'tgl a',
-#          'cpy 1 a',
-#          'dec a',
-#          'dec a' ]
 
 registers = { 'a': 7, 'b': 0, 'c': 0, 'd': 0 }
 print('Problem 1:', execute(lines.copy(), registers))
